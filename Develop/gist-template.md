@@ -72,7 +72,7 @@ const string = "hello world"
 const array = string.match(regex) //"match" is a string method
 console.log(array)   //outputs array: ["h", "h"]
 ```
-**NOTE**: The space is also a character that can be added to the character class. So, for example, `[ a-z0-9_\.-]` (the space is at the beginning), will check for spaces.
+**NOTE**: The space is also a character that can be added to the character class. So, for example, `[ a-z0-9_\.-]` (the space is at the beginning), will check for spaces. Also note that the dash symbol at the end is specifically searching for that symbol, if it was between two characters then it's trying to match something else. 
 
 Now you are probably wondering, what if we want to check through all the strings and not for one? The answer IS?... It's in the next section.
 
@@ -93,3 +93,50 @@ console.log(array)  //outputs array: ['hello', 'hello']
 ```
 **NOTE**: The `+` is essentially `{1, }` which denotes 1 to infinite occurances. If we add a number at the end like `{1,5}` then it denotes 1 or 5 occurances.
 
+<br>
+
+# What are Word Boundaries?
+
+Last component we will go over are the word boundaries. What are they? They are specific 'boundaries' denoted by `\{some letter}`. Here are some examples of word boundaries:
+
+- `\b` (denotes the position of a boundary)
+- `\d` (denotes the character class "[0-9]")
+- `\w` (denotes the character class "[A-Za-z0-9_]")
+
+In the regex example we are using
+```
+const regex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+```
+we have a word boundary `\d` which denotes the numeric values from 0-9. Basically another way to simplify our character classes. There are other word boundaries that have their respective character classes. 
+
+# Let's Analyze!
+
+Finally, we have all the components covered and now we will break down how our example regex works!
+```
+const regex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
+```
+
+As stated in the beginning, this regex checks strings whether or not they are an email. Most often is used during signing up or registering a user credentials, validates whether the email or username is an actual email. 
+
+Lets break it down into smaller parts!
+
+1.  The slash `/` denotes that we are defining a regular expression.
+2. The carrot `^` states to start a match at the beginning of the string.
+3.  The expression `([a-z0-9_\.-]+)` specifies which characters to match and to look for more than one occurance. Also stores the matched value.
+4. The `@` symbol is the next character to match following the previous expression.
+5. The expression `([\da-z\.-]+)` specifies the same as #3 but uses a word boundary `\d` to denote numeric values, finds more than 1 occurance of the character. This also stores the match value.
+6. The `\.` denotes an escaped character to actually match for the dot symbol rather than another regex syntax.
+7. The `([a-z\.]{2,6})$` states to look at the end of the string to match for a word that has letters and dots. The `{2,6}` restricts the number of occurances of 2 or 6. Meaning only 2 characters to only 6 characters within the character class `[a-z\.]`. This also stores the match value.
+8. Lastly, the regular expression is finally defined with the closing slash `/`.
+
+<br>
+
+Here is a screenshot of it's usage using [playcode.io](https://playcode.io/javascript/). Remember, whatever is in parenthesis in the regex that matches in the string is stored in the array. We can see which part of the regex matches the value. 
+
+![Picture of regex code](/Develop/images/regex-screenshot.PNG)
+
+<br>
+
+## Author
+
+Daniel Kang - [Github](https://github.com/DKhubgit)
