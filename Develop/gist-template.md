@@ -10,6 +10,16 @@ const regex = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/
 ``` 
 I know it's a lot, but this specific regex helps developers check whether a string is an email! Note, Regular expression are always contained within two 'slashes' like `/{some expression}/`. We will go over, step by step, on how to utilize this 'fascinating beast' to validate user emails. 
 
+# Table of Content
+
+  - [What is the Anchor?](#what-is-the-anchor)
+  - [What is Grouping and Capturing?](#what-is-grouping-and-capturing)
+  - [What are Character classes?](#what-are-character-classes)
+  - [What are Quantifiers?](#what-are-quantifiers)
+  - [What are Word Boundaries?](#what-are-word-boundaries)
+  - [Let's Analyze!](#lets-analyze)
+  - [Author](#author)
+
 # What is the Anchor?
 
 The first character in our example regex is what I call 'carrot' or `^`. What exactly does this character do? It checks/matches the at the start of the string, for example the 'H' in "Hello World" or the '1' in "1st place". Now this carrot is called an anchor character in regex. **Note**, the carrot also has a different meaning in a different context called 'negation'. Don't worry about it for now, let's look at the example only.
@@ -29,7 +39,7 @@ These anchor characters positions the 'matching', or says 'hey, start checking a
 
 <br>
 
-# What is a Grouping and Capturing?
+# What is Grouping and Capturing?
 
 The next part of our example regex is called Grouping and Capturing, as the title suggests we will be grouping 'patterns' that we would like to match in our strings and capturing it. In our example:
 ```
